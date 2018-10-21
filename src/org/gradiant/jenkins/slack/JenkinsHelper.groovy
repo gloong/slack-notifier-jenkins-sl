@@ -27,7 +27,7 @@ List<String> getChanges() {
     def entries = currentBuild.changeSets[i].items
     for (int j = 0; j < entries.length; j++) {
       def entry = entries[j]
-      messages.add("\t- ${entry.msg} \n<b>Author:</b>\n[${entry.author}]")
+      messages.add("\t- ${entry.msg} \n*Author:*\n[${entry.author}]")
     }
   }
 
