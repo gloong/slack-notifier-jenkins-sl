@@ -22,3 +22,22 @@ String getTestSummary() {
   }
   return summary
 }
+@NonCPS
+String getFailedTests() {
+    def testResultAction = currentBuild.rawBuild.getAction(AbstractTestResultAction.class)
+    def failedTestsString = "```"
+
+    if (testResultAction != null) {
+        def failedTests = testResultAction.getFailedTests()
+        
+        if (failedTests.size() > 9) {
+            failedTests = failedTests.subList(0, 8)
+        }
+
+        for(CaseResult cr : failedTests) {
+            failedTestsString = failedTestsString + "${cr.getFullDisplayName()}:\n${cr.getErrorDetails()}\n\n"
+        }
+        failedTestsString = failedTestsString + "```"
+    }
+    return failedTestsString
+}
