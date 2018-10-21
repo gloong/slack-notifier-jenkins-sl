@@ -9,7 +9,7 @@ String format(String title = '', String message = '', String testSummary = '') {
   def buildNumber = helper.getBuildNumber()
   def url = helper.getAbsoluteUrl()
 
-  def result = "*Application:*\n${project}\n*Branch:*\n${branch} \n*Build No*:\n#${buildNumber} \n*Commit Info:*${title.trim()} (<${url}|Open>)"
+  def result = "*Application:*\n${project}\n*Branch:*\n${branch} \n*Build No:*\n#${buildNumber} \n*Commit Info:*\n${title.trim()} (<${url}|Open>)"
   if(message) result = result + "\n*Commit Message:*\n\t ${message.trim()}"
   if(testSummary) result = result + "\n*${testSummary}*"
 
